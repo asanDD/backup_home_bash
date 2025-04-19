@@ -1,5 +1,5 @@
 
-##backup_home_bash.sh
+**backup_home_bash.sh**
 
 This script is ment to help creating backups of specific folders and files in your **${HOME}**.  
 It can also restore the folders and files in your **${HOME}** from a previously created backup.  
