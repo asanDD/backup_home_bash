@@ -8,7 +8,7 @@
 # Dependencies: bash, coreutils, rsync
 
 
-# This script is ment to help creating backups of specific folders and files in your ${HOME}.
+# This script is meant to help creating backups of specific folders and files in your ${HOME}.
 # It can also restore the folders and files in your ${HOME} from a previously created backup.
 # Simply define the folders and files in the array paths_to_backup=() at the beginning of the script.
 # Then execute the script with the following commands:
