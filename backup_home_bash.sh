@@ -5,7 +5,7 @@
 # Author: ASAN
 # Date: 19.04.2025
 # Version: 001.001.002
-# Dependencies: rsync, bash, coreutils
+# Dependencies: bash, coreutils, rsync
 
 
 # This script is ment to help creating backups of specific folders and files in your ${HOME}.
@@ -25,9 +25,6 @@
 # nice -n 10 bash backup_home_bash.sh --backup "${path_backup}" && \
 # nice -n 10 7z a -mx9 "${path_backup}.7z" "${path_backup}" && \
 # rm -dr "${path_backup}"
-#
-# Dependencies:
-# bash, coreutils, rsync
 
 #############################################################################################################################
 
