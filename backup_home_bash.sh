@@ -3,8 +3,8 @@
 #############################################################################################################################
 # Name: backup_home_bash.sh
 # Author: ASAN
-# Date: 19.04.2025
-# Version: 001.001.002
+# Date: 21.04.2025
+# Version: 001.001.003
 # Dependencies: bash, coreutils, rsync
 
 
@@ -268,7 +268,7 @@ check_paths() {
         for path in "${paths_to_backup[@]}"; do
             msg "${BLUE}${path}${NOFORMAT}"
             # execute rsync and filter the stdout and stderr of rsync to help the user better understand the issues encountered.
-            res=0; exec_rsync false "$src_root" "$path" "$dst_root" 2>&1 | sed '/^rsync error:.*$/d' | sed 's/^rsync:[^"]*"/"/' || res=${PIPESTATUS[0]}
+            res=0; exec_rsync false "$src_root" "$path" "$dst_root" 2>&1 | sed -e '/^rsync error:.*$/d' -e 's/^rsync:[^"]*"/"/' || res=${PIPESTATUS[0]}
             [ $res -ne 0 ] && error=1
         done
     fi
