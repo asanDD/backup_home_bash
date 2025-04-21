@@ -4,7 +4,7 @@
 # Name: backup_home_bash.sh
 # Author: ASAN
 # Date: 21.04.2025
-# Version: 001.001.003
+# Version: 001.001.004
 # Dependencies: bash, coreutils, rsync
 
 
@@ -230,23 +230,25 @@ declare -ga exec_rsync_options
 # Check if the paths in $paths_to_backup exist and check for write permissions.
 # @return: 0 if everything is ok, > 0 if not.
 check_paths() {
-    local path=""
     local i=0
+    local path=""
+    local src_root=""
+    local dst_root=""
     local res=0
     local error=0
 
     # Set the rsync options
     if $option_backup; then
-        local -r src_root="$path_home"
-        local -r dst_root="$path_backup"
+        src_root="$path_home"
+        dst_root="$path_backup"
         exec_rsync_options=(
             "${option_rsync_options_backup[@]}"
             "--info=none"
             "--dry-run"
             )
     else if $option_restore; then
-        local -r src_root="$path_backup"
-        local -r dst_root="$path_home"
+        src_root="$path_backup"
+        dst_root="$path_home"
         exec_rsync_options=(
             "${option_rsync_options_restore[@]}"
             "--info=none"
@@ -281,7 +283,6 @@ check_paths() {
 # @return: 0 if everything is ok, > 0 if not.
 create_backup() {
     local path=""
-    local options=""
     local src_root=""
     local dst_root=""
     local res=0
